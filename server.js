@@ -19,17 +19,6 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Database initialization
-let pool;
-(async function initializeDatabase() {
-  try {
-    pool = await connectToDatabase();
-    app.locals.db = pool; // Make the database connection available to routes
-    console.log("Database initialized");
-  } catch (err) {
-    console.error("Failed to initialize database:", err);
-  }
-})();
 
 // Routes
 app.use("/api", apiRoutes);
